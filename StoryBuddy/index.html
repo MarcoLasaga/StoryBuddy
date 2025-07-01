@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StoryBuddy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="default-font">
+
+  <div class="top-bar">
+    <div>
+      <button onclick="toggleTheme()">🌗 Theme</button>
+      <button onclick="toggleMusic()">🎵 Music</button>
+      <button onclick="changeFontSize()">🔠 Font</button>
+    </div>
+    <div>
+      <button onclick="loginUser()">🔐 Login</button>
+      <span id="loginStatus">Not logged in</span>
+    </div>
+  </div>
+
+  <header id="mainHeader" class="light-header">
+    <div class="header-banner">
+      <h1 class="glow">StoryBuddy</h1>
+      <p class="subtitle">Interactive Storytelling for Students</p>
+    </div>
+  </header>
+  
+  <!-- SIDEBAR SETTINGS -->
+<div class="sidebar-collapsed" id="sidebar">
+  <div class="sidebar-toggle" onclick="toggleSidebar()">⚙️ Settings</div>
+  <div class="sidebar-content">
+    <h3>Settings</h3>
+    <button onclick="toggleTheme()">🌗 Theme</button>
+    <button onclick="toggleMusic()">🎵 Music</button>
+    <button onclick="changeFontSize()">🔠 Font</button>
+  </div>
+</div>
+
+<!-- ACCOUNT FORM -->
+<div class="account-section">
+  <h2>Sign In / Register</h2>
+  <form action="connect.php" method="POST">
+    <input type="text" name="username" placeholder="Username" required />
+    <input type="password" name="password" placeholder="Password" required />
+    <button type="submit">Login</button>
+  </form>
+</div>
+
+
+  <div class="story-buttons" id="storyButtons"></div>
+
+  <main class="container">
+    <section class="story-half">
+      <div class="plot-container">
+        <h2>Plot</h2>
+        <p id="storyPlot">Choose a story to begin...</p>
+        <button class="ui-btn" onclick="readPlot()">🔊 Read Aloud</button>
+      </div>
+
+      <div class="notes-section">
+        <h2>Your Notes</h2>
+        <textarea id="userNotes" placeholder="Type your notes here..."></textarea>
+        <div class="notes-actions">
+          <button class="ui-btn" onclick="exportNotes()">📤 Export</button>
+          <button class="ui-btn" onclick="enhanceNotes()">🧠 AI Enhance</button>
+        </div>
+      </div>
+
+      <div class="quiz-section">
+        <h2>Quiz</h2>
+        <div id="quizBox"></div>
+      </div>
+
+      <div class="review-section" id="reviewSection">
+        <h2>Quick Review</h2>
+        <textarea id="reviewSummary" placeholder="Write a quick summary..."></textarea>
+        <button class="ui-btn" onclick="submitReview()">📩 Submit Review</button>
+        <div id="feedbackMessage"></div>
+      </div>
+
+      <div class="achievements-section">
+        <h2>Achievements</h2>
+        <ul id="achievementList"></ul>
+      </div>
+
+      <div class="stats-section">
+        <h2>Your Stats</h2>
+        <ul>
+          <li><strong>Stories Finished:</strong> <span id="statStories">0</span></li>
+          <li><strong>Quizzes Passed:</strong> <span id="statQuizzes">0</span></li>
+          <li><strong>Words Written:</strong> <span id="statWords">0</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="details-half">
+      <div class="video-section">
+        <video id="storyVideo" controls>
+          <source src="" type="video/mp4">
+        </video>
+        <div class="episode-buttons" id="timeline"></div>
+        <div class="video-controls">
+          <button class="ui-btn" onclick="prevVideo()">⏮ Prev</button>
+          <span id="episodeLabel">Episode</span>
+          <button class="ui-btn" onclick="nextVideo()">Next ⏭</button>
+        </div>
+      </div>
+
+      <div class="map-section">
+        <h3>Timeline</h3>
+        <ul id="mapTimeline" class="timeline-map"></ul>
+      </div>
+    </section>
+  </main>
+
+  <div class="progress-bar" id="progress"></div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
